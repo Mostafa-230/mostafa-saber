@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جدول متابعة التحصيل الفردي</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #e3f2fd; /* اللون الأزرق الفاتح */
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1976d2; /* اللون الأزرق الداكن */
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .table-container {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #1976d2;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: center;
+    }
+    th {
+      background-color: #1976d2;
+      color: white;
+    }
+    td {
+      background-color: #f4f9f4;
+    }
+    .btn {
+      background-color: #1976d2; /* الأزرق الداكن */
+      color: white;
+      padding: 0.7rem 1.3rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      display: inline-block;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #1565c0;
+    }
+    .input-cell {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      width: 60px;
+      background-color: #fff;
+    }
+    /* التنسيق للطباعة */
+    @media print {
+      body {
+        background-color: white;
+        color: black;
+      }
+      header {
+        background-color: #1976d2;
+        color: white;
+        box-shadow: none;
+      }
+      .table-container {
+        padding: 1.5rem;
+        box-shadow: none;
+      }
+      .btn {
+        display: none; /* إخفاء الأزرار أثناء الطباعة */
+      }
+      th {
+        background-color: #1976d2;
+        color: white;
+      }
+      td {
+        background-color: #f4f9f4;
+      }
+    }
+
+    /* تنسيق الجدول ليتناسب مع الهواتف (الشاشات الصغيرة) */
+    @media (max-width: 768px) {
+      table, th, td {
+        display: block;
+        width: 100%;
+      }
+      th, td {
+        text-align: right;
+      }
+      td {
+        margin-bottom: 1rem;
+      }
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      /* إخفاء الأعمدة غير الأساسية */
+      td input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>جدول متابعة التحصيل الفردي</header>
+  <div class="container">
+    <div class="table-container">
+      <h2>بيانات التحصيل الدراسي لكل طالب</h2>
+
+      <!-- إدخال عدد الطلاب -->
+      <label for="numStudents">عدد الطلاب: </label>
+      <input type="number" id="numStudents" value="2" min="1" max="50" onchange="updateTable()" />
+
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>اسم الطالب</th>
+            <th>المادة</th>
+            <th>التحصيل الأسبوعي</th>
+            <th>التحصيل الشهري</th>
+            <th>التحصيل الإجمالي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- صفوف الطلاب ستظهر هنا بناءً على العدد المدخل -->
+        </tbody>
+      </table>
+
+      <button class="btn" onclick="calculateTotal()">حساب الإجمالي</button>
+      <button class="btn" onclick="printTable()">طباعة الجدول</button>
+    </div>
+  </div>
+
+  <script>
+    // دالة لتحديث الجدول بناءً على عدد الطلاب المدخل
+    function updateTable() {
+      let numStudents = document.getElementById('numStudents').value;
+      let tableBody = document.querySelector('#studentTable tbody');
+      tableBody.innerHTML = ''; // مسح البيانات القديمة
+      for (let i = 0; i < numStudents; i++) {
+        let row = document.createElement('tr');
+        row.innerHTML = `
+          <td><input type="text" class="input-cell" placeholder="اسم الطالب" data-label="اسم الطالب" /></td>
+          <td><input type="text" class="input-cell" placeholder="المادة" data-label="المادة" /></td>
+          <td><input type="number" class="input-cell" placeholder="التحصيل الأسبوعي" data-label="التحصيل الأسبوعي" /></td>
+          <td><input type="number" class="input-cell" placeholder="التحصيل الشهري" data-label="التحصيل الشهري" /></td>
+          <td><input type="number" class="input-cell" placeholder="التحصيل الإجمالي" data-label="التحصيل الإجمالي" readonly /></td>
+        `;
+        tableBody.appendChild(row);
+      }
+    }
+
+    // حساب الإجمالي لكل طالب
+    function calculateTotal() {
+      let rows = document.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        let weekly = row.querySelector('td:nth-child(3) input').value;
+        let monthly = row.querySelector('td:nth-child(4) input').value;
+        let total = parseFloat(weekly) + parseFloat(monthly);
+        row.querySelector('td:nth-child(5) input').value = total || '';
+      });
+    }
+
+    // طباعة الجدول
+    function printTable() {
+      const table = document.querySelector('.table-container');
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>طباعة جدول التحصيل</title>');
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(table.outerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    }
+
+    // تحديث الجدول عند تحميل الصفحة لأول مرة
+    window.onload = updateTable;
+  </script>
+</body>
+</html>

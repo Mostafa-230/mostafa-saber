@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحة المعلمين</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f9f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.7rem;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #2e7d32;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background-color: white;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #2e7d32;
+    }
+
+    .btn {
+      background-color: #388e3c;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🎓 صفحة المعلمين - أسئلة وأدوات فعّالة</header>
+
+  <div class="container">
+
+    <!-- الأسئلة -->
+    <div class="section">
+      <h2>❓ أسئلة تطوير الأداء</h2>
+      <div class="card-grid">
+        <a href="Q1.html" class="card">
+          <div class="card-title">كيف أجعل الطالب يهتم بالحصة ويتفاعل؟</div>
+        </a>
+        <a href="Q2.html" class="card">
+          <div class="card-title">كيف أقيس أثر تدريسي على الطلاب؟</div>
+        </a>
+        <a href="Q3.html" class="card">
+          <div class="card-title">كيف أطور نفسي كمعلم باستمرار؟</div>
+        </a>
+        <a href="Q4.html" class="card">
+          <div class="card-title">كيف أتعامل مع الطالب الخجول أو المنعزل؟</div>
+        </a>
+        <a href="Q5.html" class="card">
+          <div class="card-title">أنسب الوسائل البصرية والسمعية لمادتي؟</div>
+        </a>
+        <a href="Q6.html" class="card">
+          <div class="card-title">كيف أدمج التكنولوجيا بدون تشتيت؟</div>
+        </a>
+        <a href="Q7.html" class="card">
+          <div class="card-title">أفضل أساليب التحفيز في الإعدادي والابتدائي؟</div>
+        </a>
+        <a href="Q8.html" class="card">
+          <div class="card-title">كيف أراعي الفروق الفردية داخل الفصل؟</div>
+        </a>
+        <a href="Q9.html" class="card">
+          <div class="card-title">خلق بيئة صفية آمنة ومحفزة</div>
+        </a>
+        <a href="Q10.html" class="card">
+          <div class="card-title">تلقي تقييم بنّاء من الطلاب</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- الأدوات -->
+    <div class="section">
+      <h2>🛠️ أدوات للمعلم الذكي</h2>
+      <div class="card-grid">
+        <a href="tool1.html" class="card">
+          <div class="card-title">📅 نموذج تقييم أسبوعي للطلاب (سهل الطباعة)</div>
+        </a>
+        <a href="tool2.html" class="card">
+          <div class="card-title">📊 جدول متابعة التحصيل الفردي لكل طالب</div>
+        </a>
+        <a href="tool3.html" class="card">
+          <div class="card-title">📈 دفتر نقاط رقمي يمكن تحميله (Excel / Google Sheets)</div>
+        </a>
+        <a href="tool4.html" class="card">
+          <div class="card-title">🧠 بنك أفكار لحصص تفاعلية تناسب كل نمط تعلم</div>
+        </a>
+        <a href="tool5.html" class="card">
+          <div class="card-title">🖥️ أدوات تصميم اختبارات وواجبات رقمية</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نموذج تقييم أسبوعي للطلاب</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #e3f2fd; /* اللون الأزرق الفاتح */
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1976d2; /* اللون الأزرق الداكن */
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .form-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .form-box h2 {
+      color: #1976d2;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-box label {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      display: block;
+      color: #555;
+    }
+    .form-box input, .form-box textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .form-box textarea {
+      height: 120px;
+    }
+    .btn {
+      background-color: #1976d2; /* الأزرق الداكن */
+      color: white;
+      padding: 0.7rem 1.3rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #1565c0;
+    }
+    .print-btn {
+      background-color: #388e3c; /* اللون الأخضر */
+    }
+    .print-btn:hover {
+      background-color: #2c6f27;
+    }
+
+    /* التنسيق للطباعة */
+    @media print {
+      body {
+        background-color: white;
+        color: black;
+      }
+      header {
+        background-color: #1976d2;
+        color: white;
+        box-shadow: none;
+      }
+      .form-box {
+        padding: 1.5rem;
+        box-shadow: none;
+      }
+      .btn {
+        display: none; /* إخفاء الأزرار أثناء الطباعة */
+      }
+      .form-box input, .form-box textarea {
+        border: 1px solid #bbb;
+        padding: 0.5rem;
+      }
+      .form-box h2 {
+        font-size: 1.5rem;
+        color: #1976d2;
+      }
+      .form-box label {
+        color: #333;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>نموذج تقييم أسبوعي للطلاب</header>
+  <div class="container">
+    <div class="form-box">
+      <h2>التقييم الأسبوعي</h2>
+      <form id="evaluationForm">
+        <label for="studentName">اسم الطالب:</label>
+        <input type="text" id="studentName" placeholder="اكتب اسم الطالب هنا" required />
+        
+        <label for="subject">المادة:</label>
+        <input type="text" id="subject" placeholder="اكتب اسم المادة هنا" required />
+        
+        <label for="effort">جهد الطالب هذا الأسبوع:</label>
+        <textarea id="effort" placeholder="اكتب ملاحظاتك هنا" required></textarea>
+        
+        <label for="performance">أداء الطالب:</label>
+        <textarea id="performance" placeholder="اكتب تقييمك هنا" required></textarea>
+        
+        <label for="areasOfImprovement">مجالات التحسين:</label>
+        <textarea id="areasOfImprovement" placeholder="اكتب المجالات التي يجب تحسينها" required></textarea>
+        
+        <label for="recommendations">التوصيات:</label>
+        <textarea id="recommendations" placeholder="اكتب التوصيات هنا" required></textarea>
+        
+        <button type="button" class="btn print-btn" onclick="printForm()">طباعة النموذج</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function printForm() {
+      // استخدام نافذة الطباعة
+      const form = document.getElementById('evaluationForm');
+      const clonedForm = form.cloneNode(true);
+
+      // إخفاء الأزرار أثناء الطباعة
+      const printButton = clonedForm.querySelector('.print-btn');
+      printButton.style.display = 'none';
+
+      // فتح نافذة للطباعة
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>طباعة النموذج</title>');
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(clonedForm.outerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+
+      // تنفيذ أمر الطباعة
+      printWindow.print();
+    }
+  </script>
+</body>
+</html>

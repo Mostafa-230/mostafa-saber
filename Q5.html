@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>أنسب الوسائل لمادتي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f0f7ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .select-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    select {
+      font-size: 1.1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 16px;
+      border: 1px solid #ccc;
+      outline: none;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+      min-width: 300px;
+    }
+
+    select:focus {
+      border-color: #1976d2;
+    }
+
+    .answer-box {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      margin-top: 1.5rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .answer-box h3 {
+      color: #1976d2;
+      margin-bottom: 1rem;
+    }
+
+    .answer-box ul {
+      padding-right: 1.2rem;
+    }
+
+    .answer-box li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <header>أنسب الوسائل البصرية والسمعية لمادتي</header>
+
+  <div class="container">
+    <div class="select-container">
+      <select id="subject" onchange="showAnswer()">
+        <option value="">اختر مادّتك من هنا...</option>
+        <option value="arabic">اللغة العربية</option>
+        <option value="english">اللغة الإنجليزية</option>
+        <option value="math">رياضيات</option>
+        <option value="science">علوم</option>
+        <option value="social">دراسات</option>
+        <option value="it">تكنولوجيا المعلومات</option>
+      </select>
+    </div>
+
+    <div id="answer-container"></div>
+  </div>
+
+  <script>
+    
+
+    function showAnswer() {
+      const subject = document.getElementById("subject").value;
+      const container = document.getElementById("answer-container");
+      let content = "";
+
+      if (subject === "arabic") {
+        content = `
+          <div class="answer-box">
+            <h3>اللغة العربية</h3>
+            <ul>
+              <li>📚 استخدام كتب إلكترونية تفاعلية للقراءة والتحليل.</li>
+              <li>🎧 عرض نصوص سمعية مثل القصص المسموعة لتعزيز مهارات الاستماع.</li>
+              <li>📝 استخدام عروض تفاعلية لتعليم النحو والصرف.</li>
+              <li>📺 مقاطع فيديو توضيحية للمحسنات البديعية والجمالية.</li>
+              <li>📱 تطبيقات مثل "كلمات" و"الجزيرة للأطفال".</li>
+            </ul>
+          </div>`;
+      } else if (subject === "english") {
+        content = `
+          <div class="answer-box">
+            <h3>اللغة الإنجليزية</h3>
+            <ul>
+              <li>🎤 استخدام مقاطع صوتية لمحادثات حقيقية (podcasts).</li>
+              <li>📺 فيديوهات تعليمية قصيرة من BBC أو TED-Ed.</li>
+              <li>📲 تطبيقات مثل "Duolingo" و"Quizlet".</li>
+              <li>🧩 ألعاب تفاعلية لتكوين الجمل والمفردات.</li>
+              <li>📄 أوراق عمل رقمية وتقييمات فورية.</li>
+            </ul>
+          </div>`;
+      } else if (subject === "math") {
+        content = `
+          <div class="answer-box">
+            <h3>الرياضيات</h3>
+            <ul>
+              <li>📐 استخدام الرسوم المتحركة لشرح المفاهيم الهندسية.</li>
+              <li>📊 لوحات ذكية تعرض خطوات الحل بطريقة تفاعلية.</li>
+              <li>📱 تطبيقات مثل "Photomath" و"GeoGebra".</li>
+              <li>🧠 ألعاب تفكير وتحديات رياضية.</li>
+              <li>🎞️ فيديوهات تدريجية لحل المسائل خطوة بخطوة.</li>
+            </ul>
+          </div>`;
+      } else if (subject === "science") {
+        content = `
+          <div class="answer-box">
+            <h3>العلوم</h3>
+            <ul>
+              <li>🔬 تجارب علمية مبسطة بالفيديو.</li>
+              <li>🌍 تطبيقات تفاعلية للأنظمة البيئية والطبيعة.</li>
+              <li>📱 تطبيقات مثل "Khan Academy" و"ExploreLearning Gizmos".</li>
+              <li>📊 عروض بصرية للمفاهيم المجردة (مثل الذرات أو الطاقة).</li>
+              <li>🎮 ألعاب علمية تشرح التجارب والمفاهيم.</li>
+            </ul>
+          </div>`;
+      } else if (subject === "social") {
+        content = `
+          <div class="answer-box">
+            <h3>الدراسات الاجتماعية</h3>
+            <ul>
+              <li>🗺️ خرائط تفاعلية وألعاب مواقع تاريخية.</li>
+              <li>📺 أفلام وثائقية قصيرة لتوضيح الأحداث التاريخية.</li>
+              <li>📚 نصوص تحليلية تساعد على تنمية مهارة النقد.</li>
+              <li>📱 تطبيقات مثل "Google Earth" و"TimeMaps".</li>
+              <li>🧩 بطاقات تفاعلية لربط الأحداث والشخصيات.</li>
+            </ul>
+          </div>`;
+      } else if (subject === "it") {
+        content = `
+          <div class="answer-box">
+            <h3>تكنولوجيا المعلومات</h3>
+            <ul>
+              <li>💻 شروحات فيديو لبرامج Office وبرمجة Scratch.</li>
+              <li>🕹️ ألعاب تعليمية في البرمجة والمنطق.</li>
+              <li>📱 تطبيقات مثل "Code.org" و"Scratch Junior".</li>
+              <li>📂 أنشطة مشروعية مثل تصميم موقع بسيط أو عرض تقديمي.</li>
+              <li>🧑‍💻 دمج أدوات الذكاء الاصطناعي في الأنشطة الصفية.</li>
+            </ul>
+          </div>`;
+      }
+
+      container.innerHTML = content;
+    }
+  </script>
+
+</body>
+</html>
