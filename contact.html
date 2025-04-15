@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اتصل بنا - دليلك للتعلم الذكي</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J4CRJX6MTK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J4CRJX6MTK');
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #e3f2fd;
+      color: #0d47a1;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: #1565c0;
+      padding: 1rem 2rem;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1a237e;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #0d47a1;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    button {
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    footer {
+      background-color: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>اتصل بنا</h1>
+  </header>
+
+  <main>
+    <h2>نموذج التواصل</h2>
+    <form onsubmit="sendWhatsAppMessage(); return false;">
+      <label for="name">الاسم الكامل:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="message">رسالتك:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">إرسال عبر واتساب</button>
+    </form>
+  </main>
+
+  <footer>
+    &copy; 2025 - مصطفى صابر | مشروع تعليمي لمستقبل أذكى
+    <div style="margin-top: 0.5rem;">
+      <a href="about.html">من نحن</a> |
+      <a href="privacy.html">سياسة الخصوصية</a> |
+      <a href="contact.html">اتصل بنا</a> |
+      <a href="terms.html">الشروط والأحكام</a>
+    </div>
+  </footer>
+
+  <script>
+    function sendWhatsAppMessage() {
+      const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const fullMessage = `👋 مرحبًا،\n🧑 الاسم: ${name}\n💬 الرسالة: ${message}`;
+      const phoneNumber = "201099690137"; // ← هنا حُط رقمك بدون "+" (مثال: 201234567890)
+
+      const encodedMessage = encodeURIComponent(fullMessage);
+      const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
